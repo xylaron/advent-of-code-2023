@@ -11,25 +11,25 @@ export const part2 = (input: string[]): number => {
     { text: "nine", num: 9 },
   ];
 
-  let filteredInput: string[] = input;
+  let filteredInput = input;
+  let foundAll: boolean = false;
 
-  let stop: boolean = false;
-  do {
-    stop = true;
-    for (let i = 0; i < stringNumMap.length; i++) {
-      for (let j = 0; j < input.length; j++) {
-        if (filteredInput[j].includes(stringNumMap[i].text)) {
-          stop = false;
-          filteredInput[j] = filteredInput[j].replace(
-            stringNumMap[i].text,
-            stringNumMap[i].num.toString()
+  while (!foundAll) {
+    foundAll = true;
+    for (const singleNum of stringNumMap) {
+      for (let i = 0; i < input.length; i++) {
+        if (input[i].includes(singleNum.text)) {
+          foundAll = false;
+          filteredInput[i] = filteredInput[i].replace(
+            singleNum.text,
+            singleNum.text[0] +
+              singleNum.num +
+              singleNum.text[singleNum.text.length - 1]
           );
         }
-        console.log(filteredInput[j]);
       }
-      console.log("----------------------------------------------------");
     }
-  } while (!stop);
+  }
 
   const resultArray: string[] = [];
 
