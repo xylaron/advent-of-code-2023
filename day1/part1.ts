@@ -14,7 +14,6 @@ export const part1 = (input: string[]): number => {
     if (result.length > 1) {
       result = result[0] + result[result.length - 1];
     }
-    console.log(result);
     resultArray.push(result);
   }
 
