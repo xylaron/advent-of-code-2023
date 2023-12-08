@@ -51,8 +51,6 @@ export const part2 = (input: string[]): number => {
     return game.red * game.green * game.blue;
   });
 
-  console.log(powerList);
-
   let total = 0;
   powerList.forEach((power) => {
     total += power;
